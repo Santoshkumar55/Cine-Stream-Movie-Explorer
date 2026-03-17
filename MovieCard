@@ -1,0 +1,24 @@
+"use client";
+
+export default function MovieCard({ movie }) {
+
+  function addFavorite() {
+    let fav = JSON.parse(localStorage.getItem("fav")) || [];
+    fav.push(movie);
+    localStorage.setItem("fav", JSON.stringify(fav));
+    alert("Added to favorites");
+  }
+
+  return (
+    <div>
+      <img
+        src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
+        width="200"
+      />
+
+      <h3>{movie.title}</h3>
+
+      <button onClick={addFavorite}>❤️ Favorite</button>
+    </div>
+  );
+}
